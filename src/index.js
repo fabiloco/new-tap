@@ -1,5 +1,5 @@
-import router from "./routes/index.js";
+console.log('hello');
 
-router();
+import router from './routes/index';
 
 window.addEventListener('load', router);
