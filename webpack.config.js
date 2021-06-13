@@ -22,6 +22,12 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                 }
+            },
+            // Rules for css
+            {
+                test: /\.css$/i,
+                include: path.resolve(__dirname, './src/styles'),
+                use: ['style-loader', 'css-loader', 'postcss-loader'],
             }
         ],
     },
