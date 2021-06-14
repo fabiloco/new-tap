@@ -1,9 +1,18 @@
-
+import Home from '../pages/Home';
+import Clock from '../components/Clock';
+import { set } from 'lodash';
 
 const router = async () => {
-    const content = null ||  document.getElementById('content');
+    const content = null || document.getElementById('content');
 
-    content.innerHTML = '<h1 class="text-xl">New tap</h1>'
+    content.innerHTML = await Home();
+
+    const clock = null || document.getElementById('clock');
+
+
+    setInterval(async ()=> {
+         clock.innerHTML = await Clock();
+    },1000);
 };
 
 export default router;
