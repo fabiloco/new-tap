@@ -1,6 +1,5 @@
 import Home from '../pages/Home';
 import Clock from '../components/Clock';
-import { set } from 'lodash';
 
 const router = async () => {
     const content = null || document.getElementById('content');

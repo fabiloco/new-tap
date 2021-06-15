@@ -3,15 +3,17 @@ import Clock from '../components/Clock';
 import Search from '../components/Search';
 import Weather from '../components/Weather';
 
+import getGreetings from '../utils/getGreetings';
+
 const Home = async () => {
     const bgImage = await background();
 
     return `
         <div  class="w-screen h-screen bg-gruvbox-bg flex flex-col flex-auto items-center justify-center">
-            <h1 class="text-lg text-white mb-2">Good morning!</h1>
+            <h1 class="text-lg text-white mb-2">${await getGreetings()}</h1>
 
             <div class="flex items-center justify-center mb-4">
-                <div id="clock" class=" bg-white bg-opacity-20 text-white text-opacity-50 rounded-md p-3">
+                <div id="clock" class=" bg-white bg-opacity-20 text-white text-opacity-50 rounded-md p-2">
                     <div class="">
                         ${await Clock()}
                     </div>
@@ -21,6 +23,7 @@ const Home = async () => {
                 </div>
             </div>
             ${await Search()}
+
 
         </div>
     `;
