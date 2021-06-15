@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
@@ -20,15 +21,22 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                }
+                loader: 'babel-loader',
+                
             },
             // Rules for css
             {
                 test: /\.css$/i,
-                include: path.resolve(__dirname, './src/styles'),
-                use: ['style-loader', 'css-loader', 'postcss-loader'],
+                //include: path.resolve(__dirname, './src/styles'),
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+            },
+        
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                loader: "file-loader",
+                options: {
+                    outputPath: "../fonts",
+                }
             }
         ],
     },
@@ -41,6 +49,10 @@ module.exports = {
                 filename: 'index.html',
             },
         ),
+
+        new MiniCssExtractPlugin({
+            filename: "style.css",
+          }),
 
         new Dotenv(),
     ],
