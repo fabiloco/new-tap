@@ -22,4 +22,6 @@ const getTime = async () => {
     return currentTime;
 };
 
+
+
 export default getTime;
